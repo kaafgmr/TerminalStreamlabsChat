@@ -1,0 +1,89 @@
+@import url('https://fonts.cdnfonts.com/css/terminal');
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    text-shadow: 0 0 1px #000, 0 0 2px #000;
+    background: {background_color};
+    font-family: 'terminal';
+    font-size: {font_size};
+    color: {text_color};
+	background-color: black;
+}
+
+.colon {
+    display: none;
+}
+
+#log {
+    display: table;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    table-layout: fixed;
+}
+
+#log>div {
+    display: table-row;
+	animation: fadeOut 0.5s ease {message_hide_delay} forwards;
+    -webkit-animation: fadeOut 0.5s ease {message_hide_delay} forwards;
+}
+
+#log>div.deleted {
+    visibility: hidden;
+}
+
+#log .emote {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    padding: 0.4em 0.2em;
+    position: relative;
+}
+
+#log .emote img {
+    display: inline-block;
+    height: 1em;
+    opacity: 0;
+}
+
+#log .message,#log .meta {
+	display: initial;
+    vertical-align: top;
+}
+
+#log .meta {
+    
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+	color: white;
+}
+
+#log .message {
+    word-wrap: break-word;
+	color: #00ff00;
+}
+
+.badge {
+	visibility: hidden;
+    display: inline-block;
+    margin-right: 0.2em;
+    position: relative;
+    height: 1em;
+    vertical-align: middle;
+    top: -0.1em;
+}
+
+.name {
+    
+}
