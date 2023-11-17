@@ -74,6 +74,10 @@ body {
 	color: #00ff00;
 }
 
+.h3{
+    margin: 0px;
+}
+
 .badge {
 	visibility: hidden;
     display: inline-block;
