@@ -5,4 +5,4 @@
 4. Enjoy :3
 
 ## Showcase
-![]()
+![](https://github.com/kaafgmr/TerminalStreamlabsChat/blob/master/Github/Showcase.gif)
