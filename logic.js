@@ -1,17 +1,20 @@
+var speed = 50;
+
 document.addEventListener('onEventReceived', function (obj) 
 {
     AddBadgesToName();
 
 	var msgs = document.getElementsByClassName("message");
     var lastMsg = msgs[msgs.length - 1];
-    TypingEffect(lastMsg,50);
+    TypingEffect(lastMsg,speed);
 });
 
 function AddBadgesToName()
 {
     var metas = document.querySelectorAll(".meta");
 	var lastMeta = metas[metas.length - 1];
-    
+    if (lastMeta == null) return;
+
     var badges = GetBadges(lastMeta);
     if (badges == null) return;
 
@@ -58,37 +61,45 @@ function GetBadgesSlashConcatName(badges)
     return badgeName;
 }
 
-function TypingEffect(element,speed)
+function TypingEffect(lastMsg,speed)
 {
-    let elementClone = element.cloneNode(true);
-    let nodes = elementClone.childNodes;
-    
-    element.innerHTML = "";
-    
+    if(lastMsg == undefined) return;
+
+    let lastMsgClone = lastMsg.cloneNode(true);
+    let nodes = lastMsgClone.childNodes;
+
+    lastMsg.innerHTML = "";
+
+
+
+    //problem is probably the for loop, need to try to create nested intervals
+
     for (let i = 0; i < nodes.length; i++) 
     {
-        let node = nodes[i];
+        let node = nodes[i].cloneNode();
 
         if (node.nodeName.includes("text"))
         {
-            let text=node.data;
-            var j=0;
-            var timer=setInterval(function()
+            var text = node.nodeValue;
+            var index = 0;
+            console.log(text);
+            var timer = setInterval(function()
                 {
-                    if(j<text.length)
+                    console.log("inner: " + text);
+                    if(index < text.length)
                     {
-                        element.append(text.charAt(j))
-                        j++;
+                        lastMsg.append(text.charAt(index));
+                        index++;
                     }
                     else
                     {
                         clearInterval(timer);
                     }
-                },speed);
+                }, speed);
         }
         else
         {
-            element.appendChild(node);
+            lastMsg.appendChild(node);
         }
     }
 }
